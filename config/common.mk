@@ -72,6 +72,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=log
 
+# Fonts
+include vendor/awaken/config/fonts.mk
+
 # Gapps
 $(call inherit-product, vendor/awaken/config/gapps.mk)
 
