@@ -124,7 +124,8 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 # Navbar
 PRODUCT_PACKAGES += \
     GesturalNavigationOverlayLong \
-    GesturalNavigationOverlayMedium
+    GesturalNavigationOverlayMedium \
+    GesturalNavigationOverlayHidden
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/awaken/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/awaken/overlay/common
