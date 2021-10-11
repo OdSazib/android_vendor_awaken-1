@@ -1,6 +1,5 @@
 # Google Overlays
 PRODUCT_PACKAGES += \
-    PixelSetupWizardAodOverlay \
     FilesOverlay \
     PixelDocumentsUIGoogleOverlay \
     BuiltInPrintServiceOverlay \
