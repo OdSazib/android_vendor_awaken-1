@@ -17,12 +17,11 @@
 # Awaken OTA update package
 
 AWAKEN_TARGET_PACKAGE := $(PRODUCT_OUT)/Awaken-$(AWAKEN_VERSION).zip
+SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 CL_PRP="\033[35m"
 CL_RED="\033[31m"
 CL_GRN="\033[32m"
-
-SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 .PHONY: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
@@ -32,8 +31,7 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ""
 	echo -e ${CL_BLU}${CL_RED}"===============================-Package complete-==============================="${CL_RED}
 	echo -e ${CL_BLU}${CL_RST}"Zip: "${CL_RED} $(AWAKEN_VERSION).zip${CL_RST}
-	echo -e ${CL_BLU}${CL_RST}"MD5: "${CL_RED}" `cat $(AWAKEN_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_RST}
+	echo -e ${CL_BLU}${CL_RST}"SHA256: "${CL_RED}" `cat $(AWAKEN_TARGET_PACKAGE).sha256sum | awk '{print $$1}' `"${CL_RST}
 	echo -e ${CL_BLU}${CL_RST}"Size:"${CL_RED}" `du -sh $(AWAKEN_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_RST}
-	echo -e ${CL_BLU}${CL_RST}"ID:"${CL_RED}" `sha256sum $(AWAKEN_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_RST}
 	echo -e ${CL_BLU}${CL_RST}"Path:"${CL_RED}" $(AWAKEN_TARGET_PACKAGE)"${CL_RST}
 	echo -e ${CL_BLU}${CL_RED}"================================================================================"${CL_RED}
