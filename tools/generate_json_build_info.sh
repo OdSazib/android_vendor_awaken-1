@@ -18,7 +18,7 @@ if [ "$1" ]; then
                 echo -e "${CL_GRN}Forced generation of json${CL_NC}"
             fi
             file_size=$(stat -c%s $file_path)
-            md5=$(cat "$file_path.md5sum" | cut -d' ' -f1)
+            sha256=$(cat "$file_path.sha256sum" | cut -d' ' -f1)
             datetime=$(grep ro\.build\.date\.utc ./out/target/product/$DEVICE/system/build.prop | cut -d= -f2);
             id=$(sha256sum $file_path | awk '{ print $1 }');
             build_type=$(grep ro\.awaken\.build\.type ./out/target/product/$DEVICE/system/build.prop | cut -d= -f2);
@@ -29,11 +29,11 @@ if [ "$1" ]; then
             echo "    {" >> $file_path.json
             echo "      \"datetime\": ${datetime}," >> $file_path.json
             echo "      \"size\": ${file_size}," >> $file_path.json
-            echo "      \"filehash\": \"${md5}\"," >> $file_path.json
+            echo "      \"filehash\": \"${sha256}\"," >> $file_path.json
             echo "      \"filename\": \"${file_name}\"," >> $file_path.json
             echo "      \"id\": \"${id}\"," >> $file_path.json
-            echo "      \"romtype\": \"${build_type}\"," >> $file_path.json
-            echo "      \"version\": \"${base_version}\"," >> $file_path.json
+            echo "      \"romtype\": \"${buildtype}\"," >> $file_path.json
+            echo "      \"version\": \"${num_ver}\"," >> $file_path.json
             echo "      \"url\": \"${link}\"" >> $file_path.json
             echo "    }" >> $file_path.json
             echo "  ]" >> $file_path.json
